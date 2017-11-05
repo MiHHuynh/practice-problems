@@ -92,19 +92,49 @@ SinglyLinkedList.prototype.unshift = function(val) {
   return this;
 }
 
-// This function should accept an index and a value and update the value of the node in the SinglyLinkedList at the index with the new value. It should return true if the node is updated successfully, or false if an invalid index is passed in.
+SinglyLinkedList.prototype.__get = function(idx) {
+  if (idx >= this.length || idx < 0) {
+    return null;
+  }
+  var foundNode = this.head;
+  for (let i = 0; i < idx; i++) {
+    foundNode = foundNode.next;
+  }
+  return foundNode;
+}
+
 SinglyLinkedList.prototype.set = function(idx, val) {
+  if (idx >= this.length || idx < 0) {
+    return false;
+  }
+  var foundNode = this.__get(idx);
+  foundNode.val = val;
+  return true;
+
+  // Without __get:
+  // var current = this.head;
+  // for (let i = 0; i < idx; i++) {
+  //   current = current.next;
+  // }
+  // current.val = val;
+  // return true;
 
 }
 
-// This internal/helper function should find a node at a specified index in a SinglyLinkedList. It should return the found node.
-SinglyLinkedList.prototype.__get = function(position) {
-
-}
 
 // This internal/helper function should insert a node at a specified index in a SinglyLinkedList. It should return true if the index is valid, and false if the index is invalid (less than 0 or greater than the length of the list).
 SinglyLinkedList.prototype.__insert = function(idx, val) {
-  
+  if (idx >= this.length || idx < 0) {
+    return false;
+  }
+  var newNode = new Node(val);
+  var current = this.head;
+  for (let i = 1; i < idx; i++) {
+    current = current.next;
+  }
+  newNode.next = current.next;
+  current.next = newNode;
+  return true;
 }
 
 
@@ -116,7 +146,7 @@ SinglyLinkedList.prototype.remove = function(idx) {
 
 // This function should reverse all of the nodes in a SinglyLinkedList, and should return the list.
 SinglyLinkedList.prototype.reverse = function() {
-  
+
 }
 
 
