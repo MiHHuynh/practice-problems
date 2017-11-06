@@ -189,7 +189,7 @@ SinglyLinkedList.prototype.remove = function(idx) {
 
 // This function should reverse all of the nodes in a SinglyLinkedList, and should return the list.
 SinglyLinkedList.prototype.reverse = function() {
-
+  
 }
 
 
