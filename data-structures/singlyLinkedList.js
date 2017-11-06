@@ -137,6 +137,29 @@ SinglyLinkedList.prototype.__insert = function(idx, val) {
   return true;
 }
 
+// Another implementation:
+// You’re given the pointer to the head node of a linked list, an integer to add to the list and the position at which the integer must be inserted. Create a new node with the given integer, insert this node at the desired position and return the head node. A position of 0 indicates head, a position of 1 indicates one node away from the head and so on. The head pointer given may be null meaning that the initial list is empty.
+function insert(head, data, position) {
+    var newNode = new Node(data);
+    if (!head || position === 0) {
+        newNode.next = head;
+        head = newNode;
+    }
+    else {
+        let current = head;
+        for (let i = 1; i < position; i++) {
+            if (!current.next) {
+                current.next = newNode;
+                return head;
+            }
+            current = current.next;
+        }
+        newNode.next = current.next;
+        current.next = newNode;        
+    }
+    return head;
+}
+
 
 // This function should remove a node at a specified index in a SinglyLinkedList. It should return the removed node. if the index is valid, or undefined if the index is invalid.
 SinglyLinkedList.prototype.remove = function(idx) {
