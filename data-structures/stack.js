@@ -3,7 +3,7 @@
 // First implement a constructor function for a Node. Each node should have a value property and a next property. Value should be whatever is passed to the function and next should default to null.
 function Node(val) {
   this.value = val;
-  this.next = null;
+  this.next = null; // points to the node below it
 }
 
 function Stack() {
@@ -49,5 +49,5 @@ Stack.prototype.peek = function() {
 
 // print - This function console.log's all the values in the stack.
 Stack.prototype.print = function() {
-
+  let current = this.
 }
