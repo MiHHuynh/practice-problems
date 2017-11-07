@@ -26,7 +26,7 @@ Stack.prototype.push = function(val) {
     this.last = newNode;
   }
   else {
-    this.first.next = newNode;
+    newNode.next = this.first;
     this.first = newNode;
   }
   return ++this.size;
@@ -34,10 +34,14 @@ Stack.prototype.push = function(val) {
 
 // pop - removes the node at the top of the stack and returns the value of that node. 
 Stack.prototype.pop = function() {
-  // need to account for stack of size 0 or 1
-  // need to reassign this.first after popping off last one
+  if (this.size < 0) return undefined;
   let removed = this.first;
-  this.first = this.first.next;
+  if (this.size === 1) {
+    this.first = null;
+    this.last = null;
+  } else {
+    this.first = this.first.next;
+  }
   this.size--;
   return removed.value;
 }
@@ -49,5 +53,9 @@ Stack.prototype.peek = function() {
 
 // print - This function console.log's all the values in the stack.
 Stack.prototype.print = function() {
-  let current = this.
+  let current = this.first;
+  while (current) {
+    console.log(current.val);
+    current = current.next;
+  }
 }
