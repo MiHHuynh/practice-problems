@@ -1,1 +1,3 @@
-## This is a simple repository containing all of the problems I do to improve my coding skills.
+### This is a simple repository containing all of the problems I do to improve my coding skills.
+
+This repository will be divided into several folders. As of now, there is currently a `data-structures` folder, which will contain JavaScript and Python implementations of advanced data structures, and a `miscellaneous` folder, which will contain random problems I find and solve, implemented in JavaScript.
