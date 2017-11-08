@@ -17,6 +17,7 @@ DoublyLinkedList.prototype.push = function(val) {
     this.head = newNode;
   }
   else {
+    newNode.prev = this.tail;
     this.tail.next = newNode;
   }
   this.tail = newNode;
@@ -26,7 +27,21 @@ DoublyLinkedList.prototype.push = function(val) {
 
 // This function should remove a node at the end of the DoublyLinkedList. It should return the node removed.
 DoublyLinkedList.prototype.pop = function() {
-  
+  if (!this.length) {
+    return undefined;
+  }
+
+  let removed = this.tail;
+  if (this.length === 1) {
+    this.tail = null;
+    this.head = null;
+  }
+  else {
+    this.tail.prev.next = null;
+    this.tail = this.tail.prev;
+  }
+  this.length--;
+  return removed;
 }
 
 
