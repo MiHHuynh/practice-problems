@@ -12,7 +12,16 @@ function DoublyLinkedList() {
 
 // This function should accept a value add a node to the end of the DoublyLinkedList with the given value. It should return the DoublyLinkedList.
 DoublyLinkedList.prototype.push = function(val) {
-
+  var newNode = new Node(val);
+  if (!this.length) {
+    this.head = newNode;
+  }
+  else {
+    this.tail.next = newNode;
+  }
+  this.tail = newNode;
+  this.length++;
+  return this;
 }
 
 // This function should remove a node at the end of the DoublyLinkedList. It should return the node removed.
