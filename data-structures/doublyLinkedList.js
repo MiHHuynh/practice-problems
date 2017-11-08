@@ -1,9 +1,13 @@
 function Node(val) {
-
+  this.val = val;
+  this.next = null;
+  this.prev = null;
 }
 
 function DoublyLinkedList() {
-
+  this.head = null;
+  this.tail = null;
+  this.length = 0;
 }
 
 // This function should accept a value add a node to the end of the DoublyLinkedList with the given value. It should return the DoublyLinkedList.
