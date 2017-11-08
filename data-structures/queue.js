@@ -42,9 +42,13 @@ Queue.prototype.enqueue = function(val) {
 // dequeue
 // This function removes the value at the beginning of the queue. This should be an O(1) operation and return the value removed. Note: The tests for dequeue rely on enqueue working
 Queue.prototype.dequeue = function() {
+  let removed = this.first;
+  this.first = this.first.next;
+  this.size--;
+  return removed.value;
 }
 
 // peek - This function returns the first value in the queue.
 Queue.prototype.peek = function() {
-  
+  return this.first.value;
 }
