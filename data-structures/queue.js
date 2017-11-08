@@ -5,7 +5,7 @@
 
 function Node(val) {
   this.value = val;
-  this.next = null;
+  this.next = null; // the next value to be dequeued / the value that was added to the queue after the current node
 }
 
 
@@ -22,8 +22,21 @@ function Queue() {
 
 // enqueue
 // This function adds the value to the end of the queue. This should be an O(1) operation and return the new size of the queue.
-Queue.prototype.enqueue = function() {
-  
+Queue.prototype.enqueue = function(val) {
+  var newNode = new Node(val);
+  if (!this.size) {
+    this.first = newNode;
+    this.last = newNode;
+  }
+  else if (this.size === 1) {
+    this.first.next = newNode;
+    this.last = newNode;
+  }
+  else {
+    this.last.next = newNode;
+    this.last = newNode;
+  }
+  return ++this.size;
 }
 
 // dequeue
