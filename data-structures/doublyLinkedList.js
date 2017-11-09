@@ -80,7 +80,24 @@ DoublyLinkedList.prototype.shift = function() {
 
 // This internal/helper function should find a node at a specified index in a DoublyLinkedList. It should return the found node.
 DoublyLinkedList.prototype.__get = function(idx) {
-  
+  if (idx < 0 || idx > this.length-1) {
+    return null;
+  }
+  let midpoint = Math.floor((this.length-1) / 2);
+  var current;
+  if (idx > midpoint) {
+    current = this.tail;
+    for (let i = this.length-1; i > idx; i--) {
+      current = current.prev;
+    }
+  }
+  else if (idx <= midpoint) {
+    current = this.head;
+    for (let i = 0; i < idx; i++) {
+      current = current.next;
+    }
+  }
+  return current;
 }
 
 // This function should accept an index and a value and update the value of the node in the DoublyLinkedList at the index with the new value. It should return true if the node is updated successfully, or false if an invalid index is passed in.
