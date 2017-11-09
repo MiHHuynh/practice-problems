@@ -62,7 +62,20 @@ DoublyLinkedList.prototype.unshift = function(val) {
 
 // This function should remove a node at the beginning of the DoublyLinkedList. It should return the node removed.
 DoublyLinkedList.prototype.shift = function() {
-  
+  let removed = this.head;
+  if (!this.length) {
+    return undefined;
+  }
+  else if (this.length === 1) {
+    this.head = null;
+    this.tail = null;
+  }
+  else {
+    this.head = this.head.next;
+    this.head.prev = null;
+  }
+  this.length--;
+  return removed;
 }
 
 // This internal/helper function should find a node at a specified index in a DoublyLinkedList. It should return the found node.
