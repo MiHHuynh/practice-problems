@@ -102,7 +102,12 @@ DoublyLinkedList.prototype.__get = function(idx) {
 
 // This function should accept an index and a value and update the value of the node in the DoublyLinkedList at the index with the new value. It should return true if the node is updated successfully, or false if an invalid index is passed in.
 DoublyLinkedList.prototype.set = function(idx, val) {
-  
+  if (idx < 0 || idx > this.length-1) {
+    return false;
+  }
+  var target = this.__get(idx);
+  target.val = val;
+  return true;
 }
 
 // This internal/helper function should insert a node at a specified index in a DoublyLinkedList. It should return true if the index is valid, and false if the index is invalid (less than 0 or greater than the length of the list).
