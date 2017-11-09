@@ -47,7 +47,17 @@ DoublyLinkedList.prototype.pop = function() {
 
 // This function should accept a value and add a node to the beginning of the DoublyLinkedList with the given value. It should return the DoublyLinkedList.
 DoublyLinkedList.prototype.unshift = function(val) {
-  
+  var newNode = new Node(val);
+  if (!this.length) {
+    this.tail = newNode;
+  }
+  else {
+    this.head.prev = newNode;
+    newNode.next = this.head;
+  }
+  this.head = newNode;
+  this.length++;
+  return this;
 }
 
 // This function should remove a node at the beginning of the DoublyLinkedList. It should return the node removed.
