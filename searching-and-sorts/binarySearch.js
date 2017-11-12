@@ -15,7 +15,7 @@
 // binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],100)) // -1
 
 function binarySearch(arr) {
-
+  
 }
 
 function binarySearchRecursive(arr) {
