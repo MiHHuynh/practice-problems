@@ -64,8 +64,20 @@ BinarySearchTree.prototype.insertRecursively = function(val, currentNode=this.ro
 }
 
 // This function should find a node in a binary tree. It should return the node if found, otherwise return undefined.
-BinarySearchTree.prototype.findIteratively = function() {
-
+BinarySearchTree.prototype.findIteratively = function(val) {
+  var currentNode = this.root;
+  while (currentNode) {
+    if (val < currentNode.value) {
+      currentNode = currentNode.left;
+    }
+    else if (val > currentNode.value) {
+      currentNode = currentNode.right;
+    }
+    else {
+      return currentNode;      
+    }
+  }
+  return undefined;
 }
 
 // This function should find a node in a binary tree. It should return the node if found, otherwise return undefined.
