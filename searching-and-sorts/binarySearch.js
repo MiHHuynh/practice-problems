@@ -1,5 +1,5 @@
 // binarySearch
-// This function should accept an array and value and return the index at which the value exists or -1 if the value can not be found. Do not use indexOf to solve this! This function should use iteration not recursion. Make sure that your algorithm runs in O(log(n)) and not O(n).
+// This function should accept an array and value and return the index at which the value exists or -1 if the value can not be found.
 
 // Examples
 
@@ -14,10 +14,10 @@
 // binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],40)) // -1
 // binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],100)) // -1
 
-function binarySearch(arr) {
-  
+function binarySearch(arr, val) {
+
 }
 
-function binarySearchRecursive(arr) {
+function binarySearchRecursive(arr, val) {
 
 }

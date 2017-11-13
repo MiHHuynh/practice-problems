@@ -10,6 +10,14 @@ function linearSearch(arr, val){
   return -1;
 }
 
-function linearSearchRecursive(arr, val){
-  
+function linearSearchRecursive(arr, val, start=0, end=arr.length-1){
+  if (!arr.length || (start === end && arr[start] !== val)) {
+    return -1;
+  }
+  if (arr[start] === val) {
+    return start;
+  }
+  else {
+    return linearSearch(arr, val, ++start, end);
+  }
 }
