@@ -1,23 +1,37 @@
 // binarySearch
 // This function should accept an array and value and return the index at which the value exists or -1 if the value can not be found.
 
-// Examples
-
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],1)) // 0
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],3)) // 1
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],12)) // 6
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],24)) // 11
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],50)) // 13
-
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],0)) // -1
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],7)) // -1
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],40)) // -1
-// binarySearch([1,3,4,6,8,10,12,15,19,20,21,24,30,50],100)) // -1
-
+// We are assuming the array is sorted and contains non-repeating, unique values
 function binarySearch(arr, val) {
-
+  var start = 0;
+  var end = arr.length-1;
+  while (start <= end) {
+    var mid = Math.floor((start + end)/2);
+    if (arr[mid] === val) {
+      return mid;
+    }
+    else if (arr[mid] > val) {
+      end = mid - 1;
+    }
+    else if (arr[mid] < val) {
+      start = mid + 1;
+    }
+  }
+  return -1;
 }
 
-function binarySearchRecursive(arr, val) {
-
+function binarySearchRecursive(arr, val, start=0, end=arr.length-1) {
+  var mid = Math.floor((start + end)/2);
+  if (arr[mid] === val) {
+    return mid;
+  }
+  else if (start === end) {
+    return -1;
+  }
+  else if (arr[mid] > val) {
+    return binarySearchRecursive(arr, val, start, --end);
+  }
+  else if (arr[mid] < val) {
+    return binarySearchRecursive(arr, val, ++start, end);
+  }
 }
