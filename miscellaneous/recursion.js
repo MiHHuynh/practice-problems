@@ -78,8 +78,18 @@ function capitalizeWords (arr, start=0, end=arr.length-1) {
 }
 
 
-function capitalizeFirst (arr) {
-  
+function capitalizeFirst (arr, start=0, end=arr.length-1) {
+  if (arr.length === 0) {
+    return arr;
+  }
+  else if (start === end) {
+    let currentWord = arr[start][0].toUpperCase() + arr[start].slice(1);
+    return [currentWord];
+  }
+  else {
+    let currentWord = arr[start][0].toUpperCase() + arr[start].slice(1);
+    return [currentWord].concat(capitalizeFirst(arr, ++start, end));
+  }  
 }
 
 function nestedEvenSum () {
