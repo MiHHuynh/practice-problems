@@ -92,6 +92,14 @@ function capitalizeFirst (arr, start=0, end=arr.length-1) {
   }  
 }
 
-function nestedEvenSum () {
-  
+function nestedEvenSum (nestedObj, sum=0) {
+  for (let key in nestedObj) {
+    if (Number.isInteger(nestedObj[key]) && nestedObj[key] % 2 === 0) {
+      sum += nestedObj[key];
+    }
+    else if (typeof nestedObj[key] === "object") {
+      sum = nestedEvenSum(nestedObj[key], sum);
+    }
+  }
+  return sum;
 }
