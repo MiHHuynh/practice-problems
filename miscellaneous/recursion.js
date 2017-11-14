@@ -64,3 +64,24 @@ function flatten(nestedArr, res=[]){
   }
   return res;
 }
+
+function capitalizeWords (arr, start=0, end=arr.length-1) {
+  if (arr.length === 0) {
+    return arr;
+  }
+  else if (start === end) {
+    return [arr[start].toUpperCase()];
+  }
+  else {
+    return [arr[start].toUpperCase()].concat(capitalizeWords(arr, ++start, end));
+  }
+}
+
+
+function capitalizeFirst (arr) {
+  
+}
+
+function nestedEvenSum () {
+  
+}
