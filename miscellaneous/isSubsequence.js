@@ -12,7 +12,6 @@ function isSubsequence(str1, str2) {
     for (let j = newStart; j < str2.length; j++) {
       if (str1[i] === str2[j]) {
         newStart = j + 1; // next time inner loop runs should start
-        // at the last place a character was found; not from beginning
         counter++;
         break;
       }
