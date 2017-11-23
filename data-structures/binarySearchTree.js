@@ -115,8 +115,19 @@ BinarySearchTree.prototype.toArray = function(currentNode=this.root) {
 }
 
 // This function should search through each node in the binary search tree using pre-order depth first search and return an array containing each node's value.
-BinarySearchTree.prototype.DFSPreOrder = function() {
-  
+BinarySearchTree.prototype.DFSPreOrder = function(currentNode=this.root, res=[], prevNode=null) {
+  // start at root node
+  if (!currentNode) return res;
+  if (currentNode && currentNode.left) {
+    // record value
+    res.push(currentNode.value);
+    prevNode = currentNode;
+    // go to left. record if there is a value.
+    return this.DFSPreOrder(currentNode.left, res, prevNode);
+  }
+  else if (!currentNode.left) {}
+  // call recursively for all lefts until there is no more left to see
+  // call recursively on the right
 }
 
 // This function should search through each node in the binary search tree using in-order depth first search and return an array containing each node's value.
