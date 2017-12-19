@@ -26,34 +26,24 @@
 // }
 
 function getMaxProfit(stockPricesYesterday) {
-  var currentMin = 0;
+  var currentMin = stockPricesYesterday[0];
   var currentMax = 0;
   var currMaxProfit = 0;
-  for (let i = 0; i < stockPricesYesterday.length; i++) {
-    
+  var maxProfit = 0;
+  var i = 1;
+  while (i < stockPricesYesterday.length) {
+    if (stockPricesYesterday[i] < currentMin) {
+      currentMin = stockPricesYesterday[i];
+      maxProfit = currMaxProfit;
+      currentMax = 0;
+    } else if (stockPricesYesterday[i] > currentMin) {
+      currentMax = Math.max(stockPricesYesterday[i], currentMax);
+      currMaxProfit = currentMax - currentMin;
+    }
+    i++;
   }
+  return maxProfit;
 }
 
 
 getMaxProfit([10, 7, 5, 8, 11, 9, 500]);
-
-/*
-keep track of current minimum
-keep track of current max value?
-and keep track of current max profit
-but how does this become O(n)?
-
-[10, 7, 5, 8, 11, 9, 500, 100, 42, 1, 2]
-
-currmin = 10
-
-currmin = 7
-
-currmin = 5 currmax = 8 currprofit = 3
-
-currmax = 11 currprofit = 5
-
-currmax = 500 currprofit = 495
-
-
-*/
