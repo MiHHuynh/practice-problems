@@ -26,24 +26,22 @@
 // }
 
 function getMaxProfit(stockPricesYesterday) {
+  if (stockPricesYesterday.length < 2) {
+    return "We need at least two prices in order to get a profit.";
+  }
   var currentMin = stockPricesYesterday[0];
-  var currentMax = 0;
-  var currMaxProfit = 0;
+  var currMaxProfit = stockPricesYesterday[1] - stockPricesYesterday[0];
   var maxProfit = 0;
   var i = 1;
   while (i < stockPricesYesterday.length) {
-    if (stockPricesYesterday[i] < currentMin) {
-      currentMin = stockPricesYesterday[i];
-      maxProfit = currMaxProfit;
-      currentMax = 0;
-    } else if (stockPricesYesterday[i] > currentMin) {
-      currentMax = Math.max(stockPricesYesterday[i], currentMax);
-      currMaxProfit = currentMax - currentMin;
-    }
+    currMaxProfit = stockPricesYesterday[i] - currentMin;
+    if (!maxProfit) maxProfit = currMaxProfit;
+    else maxProfit = Math.max(currMaxProfit, maxProfit);
+    currentMin = Math.min(currentMin, stockPricesYesterday[i]);
     i++;
   }
   return maxProfit;
 }
 
-
+getMaxProfit([5, 4, 3, 2, 1]);
 getMaxProfit([10, 7, 5, 8, 11, 9, 500]);
