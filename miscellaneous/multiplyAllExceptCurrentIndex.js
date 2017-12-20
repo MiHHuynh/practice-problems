@@ -18,4 +18,9 @@ function multiplyAllExceptCurrentIdx(arr) {
   return result;
 }
 
+function multiplyAllExceptCurrentIdx(arr) {
+  
+}
+
+
 multiplyAllExceptCurrentIdx([1,7,32,5]);
