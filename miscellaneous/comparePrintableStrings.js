@@ -24,24 +24,20 @@ function comparePrintableStrings(arrayOfKeypresses1, arrayOfKeypresses2) {
 function findPrintableCharacter(arrayOfKeypresses, ptr=arrayOfKeypresses.length-1) {
   var bsCounter= 0;
   while (ptr >= 0) {
-    if (isBackspace(arrayOfKeypresses[ptr])) {
+    if (arrayOfKeypresses[ptr] === "BS") {
       ptr--;
       bsCounter++;
     }
-    if (!isBackspace(arrayOfKeypresses[ptr])) {
+    else {
       if (bsCounter > 0) {
         ptr -= bsCounter;
         bsCounter = 0;
       }
-      else if (bsCounter === 0) return { "nextIndex": --ptr, "character": arrayOfKeypresses[ptr] };
+      else return { "nextIndex": --ptr, "character": arrayOfKeypresses[ptr] };
     }    
   }
   // if array is all backspaces, or there are more backspaces than characters
   return { "nextIndex": --ptr, "character" : "" };
-}
-
-function isBackspace(str) {
-  return str === "BS";
 }
 
 var kp1 = ['a', 'b', 'c', 'BS', 'c', 'BS', 'x'];
