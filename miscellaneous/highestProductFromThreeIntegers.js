@@ -21,15 +21,18 @@ function highestProductFromThreeIntegers(arrayOfInts) {
 // second: slightly better approach at O(nlogn)
 // if we sort it, the largest three numbers will be at the end of the array
 // thus we can get the highest product by returning the product of the last 3 values
-// however this approach does not work with negative values
+// or if there are negative numbers, we can check if the first 2 elements are negative
+// and if they can return a higher product than the last 3
 function highestProductFromThreeIntegers(arrayOfInts) {
   var sortedArr = arrayOfInts.sort(function(a, b){ return a-b; });
-  return sortedArr[sortedArr.length-1]*sortedArr[sortedArr.length-2]*sortedArr[sortedArr.length-3];
+  var maxProduct = 0;
+  maxProduct = Math.max(sortedArr[0]*sortedArr[1]*sortedArr[sortedArr.length-1], sortedArr[sortedArr.length-1]*sortedArr[sortedArr.length-2]*sortedArr[sortedArr.length-3]);
+  return maxProduct;
 }
 
 // third: can we do better? is there an O(n) approach?
 function highestProductFromThreeIntegers(arrayOfInts) {
-
+  
 }
 
 highestProductFromThreeIntegers([-10,-10,1,2,3]);
