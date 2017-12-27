@@ -31,8 +31,22 @@ function highestProductFromThreeIntegers(arrayOfInts) {
 }
 
 // third: can we do better? is there an O(n) approach?
+// greedy approach
+// keep track of highest and lowest values so far as we traverse through array once
 function highestProductFromThreeIntegers(arrayOfInts) {
-  
+  var currentMax = Math.max(arrayOfInts[0], arrayOfInts[1]);
+  var currentMin = Math.min(arrayOfInts[0], arrayOfInts[1]);
+  var lowestProductOf2 = currentMax * currentMin;
+  var highestProductOf2 = lowestProductOf2;
+  var maxProductOf3 = arrayOfInts[0] * arrayOfInts[1] * arrayOfInts[2];
+  for (let i = 2; i < arrayOfInts.length; i++) {
+    maxProductOf3 = Math.max(maxProductOf3, arrayOfInts[i] * lowestProductOf2, arrayOfInts[i] * highestProductOf2);
+    highestProductOf2 = Math.max(highestProductOf2, arrayOfInts[i] * currentMax, arrayOfInts[i] * currentMin);
+    lowestProductOf2 = Math.min(lowestProductOf2, arrayOfInts[i] * currentMax, arrayOfInts[i] * currentMin);
+    currentMin = Math.min(currentMin, arrayOfInts[i]);
+    currentMax = Math.max(currentMax, arrayOfInts[i]);
+  }
+  return maxProductOf3;
 }
 
 highestProductFromThreeIntegers([-10,-10,1,2,3]);
