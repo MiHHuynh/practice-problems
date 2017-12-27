@@ -30,8 +30,14 @@ function findPrintableCharacter(arrayOfKeypresses, ptr=arrayOfKeypresses.length-
     }
     else {
       if (bsCounter > 0) {
-        ptr -= bsCounter;
-        bsCounter = 0;
+        while (bsCounter > 0) {
+          ptr--;
+          bsCounter--;
+          if (arrayOfKeypresses[ptr] === "BS") {
+            bsCounter++;
+            ptr--;
+          } 
+        }
       }
       else return { "nextIndex": --ptr, "character": arrayOfKeypresses[ptr] };
     }    
@@ -47,6 +53,7 @@ var kp4 = ['BS'];
 var kp5 = ['x'];
 var kp6 = ['BS', 'BS', 'BS'];
 var kp7 = ['a', 'b', 'BS', 'BS', 'BS', 'BS'];
+var kp8 = ['a', 'b', 'BS', 'c', 'BS', 'BS', 'BS'];
 
 comparePrintableStrings(kp3, kp3); // true
 comparePrintableStrings(kp3, kp2); // true

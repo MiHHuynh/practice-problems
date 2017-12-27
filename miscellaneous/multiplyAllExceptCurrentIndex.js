@@ -19,7 +19,16 @@ function multiplyAllExceptCurrentIdx(arr) {
 }
 
 function multiplyAllExceptCurrentIdx(arr) {
-  
+  var allProductsBefore = [];
+  var allProductsAfter = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      allProductsBefore.push(1);
+    }
+    else {
+      
+    }
+  }
 }
 
 
