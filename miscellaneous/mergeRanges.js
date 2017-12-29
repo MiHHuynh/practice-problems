@@ -38,6 +38,9 @@
 // timestamps. In any case, the spirit of the challenge is to merge meetings where startTime and
 // endTime don't have an upper bound.
 
+
+// at the very least, we need to go through both of the ranges once
+// so the best we can do would be O(n+m), for n being the length of one arr and the m being the other
 function mergeRanges(arrOfMeetingTimes) {
   var mergedTimes;
   return mergedTimes;
